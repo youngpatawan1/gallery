@@ -1,0 +1,31 @@
+
+<div class="container">
+<a id="home-logo", href = '<%=root_path%>', class="navbar-left">
+      <%= image_tag('home_icon.svg', alt: 'module selector', width: '40') %>
+</a>
+<nav>   
+<ul class="nav navbar-nav navbar-right"> 
+<li class="nav-link" >
+    <%= link_to "About", '#'%>
+</li>
+<% if logged_in? %>
+<a id="discover-btn", href = '#'>
+      <%= image_tag('compass.svg', width: '35') %>
+</a>
+<a id="profile-btn", href = '#',class="btn dropdown-toggle" data-toggle="dropdown">
+      <%= image_tag('menu.svg', width: '40') %>
+      <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+    <li><%= link_to "Profile", current_user %></li> 
+    <li><%= link_to "Settings", '#' %></li>
+    <li class="divider"></li>
+    <li><%= link_to "Log out", logout_path, method: :delete %> </li>
+</ul> 
+</li>
+<% else %>
+<li><%= link_to "Log in", login_path %></li>
+<% end %> 
+</ul>
+</nav> 
+</div>
