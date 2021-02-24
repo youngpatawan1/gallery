@@ -3,4 +3,5 @@ class Painting < ApplicationRecord
     has_one_attached :custom_image
 
     validates :custom_image, presence: true
+    
 end

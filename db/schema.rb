@@ -43,10 +43,8 @@ ActiveRecord::Schema.define(version: 2021_02_24_161827) do
   create_table "paintings", force: :cascade do |t|
     t.string "title"
     t.integer "user_id", null: false
-    t.integer "gallery_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["gallery_id"], name: "index_paintings_on_gallery_id"
     t.index ["user_id"], name: "index_paintings_on_user_id"
   end
 
@@ -54,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_161827) do
     t.string "username"
     t.string "email"
     t.string "password"
+    t.string "password_confirmation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
@@ -63,6 +62,5 @@ ActiveRecord::Schema.define(version: 2021_02_24_161827) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "paintings", "galleries"
   add_foreign_key "paintings", "users"
 end

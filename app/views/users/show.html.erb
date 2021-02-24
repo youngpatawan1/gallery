@@ -7,7 +7,9 @@
                 </h2>
             </div>
             <div class="row">
-                <%= image_tag current_user.profile_pic, class: "img-thumbnail img-fluid"%>
+                <% if @user.profile_pic.attached? %>
+                <%= image_tag current_user.profile_pic, class: "img-thumbnail img-fluid" %>
+                <% end %>
             </div>
             <div class="row">
                 <%= current_user.about %>
@@ -18,5 +20,10 @@
             <div class="row">
                 <%= link_to "Add Painting", new_user_painting_path(current_user.id), class: "btn btn-primary form-submit-btn" %>
             </div>
+        </div>
+        <div class="col-md-2">
+            <%= current_user.paintings.each do |painting| %>
+              <%= image_tag painting %>
+            <% end %>
         </div>
     </div>

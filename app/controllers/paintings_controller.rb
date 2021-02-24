@@ -1,23 +1,18 @@
 class PaintingsController < ApplicationController
+  attr_accessor :custom_image, :title, :user_id
   def new
-    @painting = Painting.new
+    @user = User.find(params[:user_id])
   end
 
   def create
-    user = current_user
-    @painting = Painting.new(painting_params)
-    if @painting.save
-      redirect_to current_user
-    else
-      render 'new'
-    end
+    @painting = Painting.create!(painting_params)
   end
 
   def destroy
   end
 
   private
-  def user_params
-      params.require(:user).permit(:gallery, :custom_image, :title)
+  def painting_params
+      params.require(:painting).permit(:custom_image, :title)
   end
 end

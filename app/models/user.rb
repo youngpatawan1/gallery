@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-    has_many :paintings, dependent: :destroy
-    has_many :galleries, dependent: :destroy
+    has_many_attached :paintings
     has_one_attached :profile_pic
 
     before_save {self.email = email.downcase }
@@ -15,4 +14,5 @@ class User < ApplicationRecord
           BCrypt::Engine.cost
          BCrypt::Password.create(string, cost: cost) 
         end
+      
 end

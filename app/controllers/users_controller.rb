@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    attr_accessor :username, :email, :password
+    attr_accessor :username, :email, :password, :profile_pic, :paintings
 
     def index
     end
@@ -37,11 +37,15 @@ class UsersController < ApplicationController
         end           
     end
 
+
     def destroy
     end
 
+
+
     private
         def user_params
-            params.require(:user).permit(:username, :email, :password, :password_confirmation, :profile_pic, :about)
+            params.require(:user).permit(:username, :email, :password, :password_confirmation, :profile_pic, :about, paintings: [])
         end
+
 end
