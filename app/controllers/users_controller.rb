@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     attr_accessor :username, :email, :password
-    
+
     def index
     end
 
@@ -42,6 +42,6 @@ class UsersController < ApplicationController
 
     private
         def user_params
-            params.require(:user).permit(:username, :email, :password, :password_confirmation)
+            params.require(:user).permit(:username, :email, :password, :password_confirmation, :profile_pic, :about)
         end
 end

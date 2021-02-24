@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'paintings/new'
+  get 'paintings/create'
+  get 'paintings/destroy'
   resources :users do
-    resources :galleries do
       resources :paintings
-    end
   end
   
   root 'static_pages#home'
