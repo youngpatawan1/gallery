@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many_attached :paintings
+    has_many :paintings
     has_one_attached :profile_pic
 
     before_save {self.email = email.downcase }

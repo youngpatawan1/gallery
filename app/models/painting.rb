@@ -1,7 +1,7 @@
 class Painting < ApplicationRecord
     belongs_to :user
+    accepts_nested_attributes_for :user
     has_one_attached :custom_image
+    attr_accessor :likes
 
-    validates :custom_image, presence: true
-    
 end

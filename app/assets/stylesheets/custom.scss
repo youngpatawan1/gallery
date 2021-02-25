@@ -99,9 +99,40 @@ body {
 .profile-sidebar {
     background-color: $pale-khaki;
     padding: 0em 3em 2em 2em;
+    .username {
+        color:$plum;
+    }
+    p {
+        text-align: center;
+        padding-top: 1em;
+    }
 
 }
 
+
+
+/* gallery */
+.profile-gallery {
+    padding: 2em;
+    .thumbnail-container {
+        width: fit-content;
+        height: fit-content;
+        background-color: $khaki;
+        h2 {
+            color: $light-blue;
+            font-size: 1.5em;
+        }
+    }
+}
+
+/* display image */
+.main-image {
+    text-align: center;
+    padding-top: 5em;
+    .img-fluid {
+        max-width: 75em;
+    }
+}
 
 
 /* buttons */

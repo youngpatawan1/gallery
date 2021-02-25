@@ -1,14 +1,30 @@
 class PaintingsController < ApplicationController
-  attr_accessor :custom_image, :title, :user_id
+
+  before_action :set_user, only: [:new, :create]
   def new
-    @user = User.find(params[:user_id])
+    @painting = @user.paintings.new
   end
 
   def create
-    @painting = Painting.create!(painting_params)
+    @painting = @user.paintings.create(painting_params)
+    if @painting.save
+      redirect_to @user
+    else
+      flash[:danger] = "Invalid Format"
+    end
+  end
+
+  def show
+    @painting = Painting.find(params[:user_id])
   end
 
   def destroy
+
+  end
+
+  def set_user
+    # use params.require to use strong params
+    @user = User.find(params.require(:user_id))
   end
 
   private

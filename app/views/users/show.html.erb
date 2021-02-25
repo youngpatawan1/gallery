@@ -8,22 +8,33 @@
             </div>
             <div class="row">
                 <% if @user.profile_pic.attached? %>
-                <%= image_tag current_user.profile_pic, class: "img-thumbnail img-fluid" %>
+                <%= image_tag @user.profile_pic, class: "img-thumbnail img-fluid profile-pic" %>
                 <% end %>
             </div>
             <div class="row">
+                <p>
                 <%= current_user.about %>
+                </p>
             </div>
+            <% if @user == current_user %>
             <div class="row">
                 <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary form-submit-btn" %>
             </div>
             <div class="row">
                 <%= link_to "Add Painting", new_user_painting_path(current_user.id), class: "btn btn-primary form-submit-btn" %>
             </div>
+            <% end %>
         </div>
-        <div class="col-md-2">
-            <%= current_user.paintings.each do |painting| %>
-              <%= image_tag painting %>
+        <div class="col-md-8 profile-gallery">
+            <% @user.paintings.each do |painting| %>
+            <div class="col-sm-2 thumbnail-container">
+                <%= link_to user_painting_path(painting) do%>
+                    <h2 class="thumbnail-title">
+                        <%=painting.title %>
+                    </h2>
+                <% end %>
+                <%= image_tag painting.custom_image, class: "img-thumbnail img-fluid", width: "100em"%>
+            </div>
             <% end %>
         </div>
     </div>

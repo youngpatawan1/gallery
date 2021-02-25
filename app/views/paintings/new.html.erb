@@ -2,12 +2,13 @@
 <h1>Upload New Painting</h1>
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
-            <%= form_with model: @user do |f| %>
-                <%= f.label :paintings %>
-                <%= f.file_field :paintings, multiple: true, required: true, class: 'form-control'%>
+            <%= form_with(model: @painting, url: user_paintings_path(@user)) do |f| %>
+                <%= f.label :title %>
+                <%= f.text_field :title, required: true, class: 'form-control' %>
+                <%= f.file_field :custom_image, required: true, class: 'form-control'%>
 
-                <%= f.submit "Save", class: "btn btn-primary"%>
-                <%= link_to "Cancel", @user , class: "btn cancel-btn" %>
+                <%= f.submit "Save", class: "btn btn-primary form-submit-btn"%>
+                <%= link_to "Cancel", @user , class: "btn cancel-btn form-submit-btn" %>
             <% end %>
 </div>
 </div>
