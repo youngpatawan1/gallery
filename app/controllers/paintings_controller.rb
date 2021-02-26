@@ -1,12 +1,13 @@
 class PaintingsController < ApplicationController
 
-  before_action :set_user, only: [:new, :create]
+
+  before_action :set_user, only: [:new, :create, :show]
   def new
     @painting = @user.paintings.new
   end
 
   def create
-    @painting = @user.paintings.create(painting_params)
+    @painting = @user.paintings.create!(painting_params)
     if @painting.save
       redirect_to @user
     else
@@ -15,7 +16,7 @@ class PaintingsController < ApplicationController
   end
 
   def show
-    @painting = Painting.find(params[:user_id])
+    @painting = Painting.find(params[:id])
   end
 
   def destroy

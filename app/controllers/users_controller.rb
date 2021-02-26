@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    attr_accessor :username, :email, :password, :profile_pic, :paintings
+    attr_accessor :username, :email, :password, :profile_pic, :paintings, :likes
 
     def index
     end

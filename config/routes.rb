@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users do
-      resources :paintings
+      resources :paintings do
+        resources :likes_joins
+      end
   end
   
   root 'static_pages#home'

@@ -3,4 +3,6 @@
         <div class="main-image">
             <%= image_tag @painting.custom_image, class: "img-fluid" %>
         </div>
+        <p><%= @painting.likes_joins.count %> <%= (@painting.likes_joins.count) == 1 ? 'Like' : 'Likes'%></p>
+        <%= button_to 'Like', user_painting_likes_joins_path(current_user, @painting), method: :post %>
     </div>

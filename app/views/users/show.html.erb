@@ -3,7 +3,7 @@
         <div class="col-md-2 profile-sidebar">
             <div class="row">
                 <h2 class="username">
-                <%=current_user.username %>
+                <%=@user.username %>
                 </h2>
             </div>
             <div class="row">
@@ -28,7 +28,7 @@
         <div class="col-md-8 profile-gallery">
             <% @user.paintings.each do |painting| %>
             <div class="col-sm-2 thumbnail-container">
-                <%= link_to user_painting_path(painting) do%>
+                <%= link_to user_painting_path(@user, painting) do%>
                     <h2 class="thumbnail-title">
                         <%=painting.title %>
                     </h2>

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-    has_many :paintings
+    has_many :paintings, dependent: :destroy
+    has_many :likes_joins, dependent: :destroy
     has_one_attached :profile_pic
 
     before_save {self.email = email.downcase }
