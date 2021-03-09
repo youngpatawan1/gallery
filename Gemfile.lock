@@ -112,6 +112,7 @@ GEM
     nio4r (2.5.5)
     nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
+    paperjs (0.11.5)
     pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -220,6 +221,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  paperjs
   pry
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

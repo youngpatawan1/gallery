@@ -4,5 +4,14 @@
             <%= image_tag @painting.custom_image, class: "img-fluid" %>
         </div>
         <p><%= @painting.likes_joins.count %> <%= (@painting.likes_joins.count) == 1 ? 'Like' : 'Likes'%></p>
-        <%= button_to 'Like', user_painting_likes_joins_path(current_user, @painting), method: :post %>
+            <% if already_liked? %>
+                <% like = LikesJoin.find_by(user_id: current_user.id, painting_id: @painting.id) %>
+                <%= link_to user_painting_likes_join_path(current_user, @painting, like), method: :delete do %>
+                    <%= image_tag 'unlike.svg', width: '20' %>
+                <% end %>
+            <% else %>
+                <%= link_to user_painting_likes_joins_path(current_user, @painting), method: :post do %>
+                    <%= image_tag 'like.svg', width: '20' %>
+                <% end %>
+            <% end %>
     </div>

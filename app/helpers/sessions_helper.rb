@@ -18,4 +18,7 @@ module SessionsHelper
         @current_user = nil
     end
 
+    def already_liked?
+        LikesJoin.where(user_id: current_user.id, painting_id: params[:id]).exists?
+    end
 end

@@ -7,9 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-require("jquery")
 import "bootstrap"
+require("jquery")
+
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import * as paper from 'paper';
+window.paper = paper;
+require('./custom/custom')

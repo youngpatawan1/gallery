@@ -2,7 +2,7 @@ class LikesJoinsController < ApplicationController
 
     before_action :find_painting
     before_action :find_like, only: [:destroy]
-    before_action :set_user, only: [:create, :show]
+    before_action :set_user, only: [:create, :show, :destroy]
 
     def create
         if already_liked?
@@ -13,13 +13,11 @@ class LikesJoinsController < ApplicationController
         redirect_to user_painting_path(@user, @painting)
       end
     
-      def destroy
-        if !(already_liked?)
-          flash[:notice] = "cannot unlike"
-        else
-          @like.destroy
-        end
-      end
+    def destroy
+      @like = LikesJoin.find(params[:id])
+      @like.destroy
+      redirect_to user_painting_path(@user, @painting)
+    end
     
     
       private
@@ -29,7 +27,7 @@ class LikesJoinsController < ApplicationController
         end
     
         def find_like
-          @like = @painting.likes_joins.find(params[:user_id])
+          @like = LikesJoin.where(user_id: current_user.id, painting_id: params[:id])
         end
 
         def set_user
