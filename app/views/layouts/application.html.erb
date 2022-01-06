@@ -9,14 +9,11 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-  <header class="navbar navbar-fixed-top navbar-inverse">
-  <%= render 'layouts/shared/header' %>
-  </header>
-    <div id="main" class="container clear-top">
+    <header>
+      <%= render 'layouts/shared/header'%>
+    </header>
     <%= yield %>
-    </div>
-      <%= render 'layouts/shared/footer'%>
+    <%= render 'layouts/shared/footer'%>
   </body>
 </html>

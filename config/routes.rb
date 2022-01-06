@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   end
   
   root 'static_pages#home'
-  get 'static_pages/home'
   get 'static_pages/discover', to: 'static_pages#discover'
   get 'static_pages/canvas', to: 'static_pages#canvas'
   get 'signup', to: 'users#new'

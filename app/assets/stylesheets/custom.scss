@@ -10,8 +10,8 @@ $plum: #904C77;
 
 /*header*/
 header {
+  background-color: $light-blue;
     .container {
-        background-color: $plum;
         width: inherit;
         height: fit-content;
         #home-logo {
@@ -41,7 +41,6 @@ header {
 
 /*site body*/
 body {
-    margin-top: 80px;
     background-color: $khaki;
     .container {
         width: 100%;
