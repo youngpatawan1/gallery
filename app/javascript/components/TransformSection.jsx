@@ -10,6 +10,8 @@ class TransformSection extends React.Component {
     };
   }
 
+  this.onChange
+
   render() {
     return <InlineField value={this.state.value} />;
   }

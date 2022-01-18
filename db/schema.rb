@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_221405) do
+ActiveRecord::Schema.define(version: 2022_01_18_150111) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2021_02_25_221405) do
     t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "captions", force: :cascade do |t|
+    t.string "caption"
+    t.integer "user_id", null: false
+    t.integer "painting_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["painting_id"], name: "index_captions_on_painting_id"
+    t.index ["user_id"], name: "index_captions_on_user_id"
   end
 
   create_table "likes_joins", force: :cascade do |t|
@@ -72,6 +82,8 @@ ActiveRecord::Schema.define(version: 2021_02_25_221405) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "captions", "paintings"
+  add_foreign_key "captions", "users"
   add_foreign_key "likes_joins", "paintings"
   add_foreign_key "likes_joins", "users"
   add_foreign_key "paintings", "users"
