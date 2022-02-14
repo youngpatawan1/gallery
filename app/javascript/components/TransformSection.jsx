@@ -6,30 +6,31 @@ class TransformSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      value: this.props.value,
       userId: this.props.userId,
       paintingId: this.props.paintingId
     };
-
-    this.setValue = this.setValue.bind(this);
   }
 
   setValue = (value) => {
-    this.setState({value: value});
-    debugger
-    const url = "/captions";
+    var arr = this.state;
+    arr['value'] = value;
+    arr['captionId'] = this.props.captionId
     const token = document.querySelector('meta[name="csrf-token"]').content;
+    const method = arr['captionId'] == null ? "POST" : "PUT";
+    const url = method == "POST" ? "/captions" : "/captions" + "/" + arr['captionId'];
     fetch(url, {
-      method: "post",
+      method: method,
       headers: {
         "X-CSRF-Token": token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(arr),
     })
       .then((data) => {
         if (data.ok) {
           return data.json();
+          this.setState({value: value});
         }
         throw new Error("Network error.");
       })
@@ -37,7 +38,7 @@ class TransformSection extends React.Component {
   }
 
   render() {
-    return <InlineField value={this.state.value} setValue={this.setValue}/>;
+    return <InlineField value={this.props.value} setValue={this.setValue.bind(this)}/>;
   }
 }
 

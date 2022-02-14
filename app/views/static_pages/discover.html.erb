@@ -10,8 +10,12 @@
                     <%=painting.title %>
                 </h2>
             <% end %>
-            <%= image_tag painting.custom_image, class: "img-thumbnail img-fluid", width: "100em"%>
-            <%= react_component("TransformSection", { userId: user.id, paintingId: painting.id }) %>
+            <%= image_tag painting.custom_image, class: "img-thumbnail img-fluid", width: "100em" %>
+            <% painting.captions.each do |caption|%>
+              <% value = caption.caption %>
+              <li><%= react_component("TransformSection", { userId: user.id, paintingId: painting.id, value: value, captionId: caption.id }) %></li>
+            <% end %>
+            <%= react_component("TransformSection", { userId: user.id, paintingId: painting.id, value: '' }) %>
         </div>
     <% end %>
 <% end %>

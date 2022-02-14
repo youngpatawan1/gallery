@@ -1,6 +1,4 @@
 class PaintingsController < ApplicationController
-
-
   before_action :set_user, only: [:new, :create, :show]
   def new
     @painting = @user.paintings.new

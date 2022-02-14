@@ -161,3 +161,15 @@ canvas[resize] {
 canvas {
   background-color: #66B3BA;
 }
+
+
+/* comments */
+.inline-edit-field {
+  background-color: white;
+  border: 1px solid;
+  padding: 8px;
+  :hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+  }
+}

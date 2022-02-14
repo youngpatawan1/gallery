@@ -7,8 +7,12 @@ const InlineField = ({ value, setValue }) => {
 
   const onKeyDown = (event) => {
     if (event.key === "Enter" || event.key === "Escape") {
-      setValue(event.target.value);
+      event.target.blur();
     }
+  }
+
+  const onBlur = (event) => {
+    setValue(event.target.value);
   }
 
   return (
@@ -18,6 +22,8 @@ const InlineField = ({ value, setValue }) => {
       value={editValue}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      onBlur={onBlur}
+      class="inline-edit-field"
     />
   )
 }

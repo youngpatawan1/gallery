@@ -1,9 +1,18 @@
 class CaptionsController < ApplicationController
   def new
   end
+
+  def update
+    @caption = Caption.find_by(id: params[:captionId])
+    @caption.update(caption: params[:value])
+    render :json => @caption
+  end
   
   def create 
-    binding.pry
+    @caption = Caption.create(user_id: params[:userId],
+                   painting_id: params[:paintingId],
+                   caption: params[:value])
+    render :json => @caption
   end
 
   private
