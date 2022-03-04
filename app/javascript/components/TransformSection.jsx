@@ -30,7 +30,6 @@ class TransformSection extends React.Component {
       .then((data) => {
         if (data.ok) {
           return data.json();
-          this.setState({value: value});
         }
         throw new Error("Network error.");
       })

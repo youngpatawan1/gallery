@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users do
+      get '/thumbnail_url', to: 'users#thumbnail_url'
       resources :paintings do
         resources :likes_joins
       end

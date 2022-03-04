@@ -18,7 +18,6 @@ class PaintingsController < ApplicationController
   end
 
   def destroy
-
   end
 
   def set_user

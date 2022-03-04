@@ -41,6 +41,8 @@ class UsersController < ApplicationController
     def destroy
     end
 
+    def thumbnail_url
+    end
 
 
     private
