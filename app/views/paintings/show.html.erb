@@ -15,6 +15,6 @@
               <% end %>
           <% end %>
       <div class="row">
-        <%= react_component('Painting', {painting: @painting.as_json, comments: @painting.captions, image: url_for(@painting.custom_image)}) %>
+        <%= react_component('Painting', {painting: @painting.as_json, comments: @painting.captions, image: url_for(@painting.custom_image), likes: @painting.likes_joins}) %>
       </div>
   </div>

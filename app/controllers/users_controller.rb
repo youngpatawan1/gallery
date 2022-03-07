@@ -42,6 +42,8 @@ class UsersController < ApplicationController
     end
 
     def thumbnail_url
+      user = User.find_by(id: params[:user_id])
+      url_for(user.profile_pic)
     end
 
 
