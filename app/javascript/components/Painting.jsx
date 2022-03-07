@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import { Comment, Avatar } from 'antd'
 import 'antd/dist/antd.css'
 import { Link } from 'react-router-dom'
-import { Image } from 'antd'
-import LikesButton from './LikesButton'
+import { Image, Button } from 'antd'
+import {HeartOutlined} from '@ant-design/icons'
 
 class Painting extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Painting extends React.Component {
     return (
     <div>
     <Image width={500} src={this.props.image} />
-    <LikesButton />
+    <Button icon={<HeartOutlined />}></Button>
     </div>
     );
  }
