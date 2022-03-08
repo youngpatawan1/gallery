@@ -15,6 +15,7 @@
               <% end %>
           <% end %>
       <div class="row">
-        <%= react_component('Painting', {painting: @painting.as_json, comments: @painting.captions, image: url_for(@painting.custom_image), likes: @painting.likes_joins}) %>
+        <%= users_that_liked = @painting.likes_joins.map { |like| User.find_by(id: like.user_id).username } %>
+        <%= react_component('Painting', {paintingId: @painting.id, comments: @painting.captions, image: url_for(@painting.custom_image), likes: users_that_liked}) %>
       </div>
   </div>
